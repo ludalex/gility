@@ -1,4 +1,4 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Controller, Get, Param, UseGuards } from '@nestjs/common';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import Order from './order.model';
 import { OrderService } from './order.service';
@@ -9,7 +9,7 @@ export class OrderController {
   constructor(private readonly orderService: OrderService) {}
 
   @Get()
-  async getOrders() {
+  async getOrders(): Promise<Order[]> {
     return await this.orderService.findAll();
   }
 
