@@ -4,26 +4,27 @@ import Item from 'src/items/item.model';
 import Order from 'src/orders/order.model';
 import User from 'src/users/user.model';
 
-function csvReader(model: 'orders'): Promise<Order[]> 
-function csvReader(model: 'users'): Promise<User[]> 
-function csvReader(model: 'items'): Promise<Item[]> 
-function csvReader(model: 'orders' | 'users' | 'items') {
-  return new Promise((resolve, reject) => {
+type ModelMap = {
+  orders: Order
+  users: User
+  items: Item
+}
+
+function csvReader<T extends keyof ModelMap>(model: T) : Promise<ModelMap[T][]> {
     let data = [];
-  
-    // Read the CSV file corresponding to the specified table
-    fs.createReadStream(`./data/${model}.csv`)
-    .pipe(csv())
-    .on('data', (row) => data.push(row))
-    .on('end', () => {
-      console.log(data);
-      
-      return resolve(data);    
+    
+    return new Promise((resolve, reject) => {
+      // Read the CSV file corresponding to the specified table
+      fs.createReadStream(`./data/${model}.csv`)
+      .pipe(csv())
+      .on('data', (row) => data.push(row))
+      .on('end', () => {        
+        resolve(data as ModelMap[T][]); 
+      })
+      .on('error', (err) => {      
+        reject(err);    
+      });
     })
-    .on('error', (err) => {      
-      return reject(err);    
-    });
-  })
 }
 
 export default csvReader;
