@@ -1,6 +1,6 @@
 Hello there.
   
-## Run `frontend` the project
+## Run the `frontend` project:
 
 
 ```bash
@@ -12,7 +12,7 @@ yarn dev
 Open [http://localhost:3000](http://localhost:3000) with your browser.
   
 
-## Run `backend` the project
+## Run the `backend` project:
 
 
 ```bash
@@ -26,6 +26,9 @@ Try out the API at [http://localhost:3000](http://localhost:3000) with the follo
 
 All endpoints are protected by JWT authentication, you can use the following pre-signed JWT:
 `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwidXNlcm5hbWUiOiJsdWRhbGV4IiwiaWF0IjoxNTE2MjM5MDIyfQ.f7VDQkMyevNwXAWPzaB3B_VrpRfHetSuSGxaoKeAwnc`
+
+### CURL Examples
+
 
 #### GET /orders
 _fetches all orders_
