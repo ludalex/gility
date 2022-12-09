@@ -20,7 +20,7 @@ export const TodoContainer = () => {
         },
       ]);
 
-    setText("");
+    setText('');
   };
 
   const checkTodo = (id: number) => {

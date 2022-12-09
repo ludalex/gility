@@ -1,7 +1,9 @@
 import { Controller, Get, Param } from '@nestjs/common';
+import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import Item from './item.model';
 import { ItemService } from './item.service';
 
+@UseGuards(JwtAuthGuard)
 @Controller('items')
 export class ItemController {
   constructor(private readonly itemService: ItemService) {}
