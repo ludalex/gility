@@ -51,7 +51,7 @@ export const TodoContainer = () => {
           text={text}
         />
 
-        <div className="overflow-x-hidden overflow-y-auto ">
+        <div className="overflow-x-hidden overflow-y-auto">
           {pendingTodoes.length > 0 && (
             <div className="mt-5">
               
@@ -66,7 +66,7 @@ export const TodoContainer = () => {
           )}
 
           {completedTodoes.length > 0 && (
-            <div className=" border-t border-slate-400/20">
+            <div>
               <h2 className="text-2xl font-bold text-gray-700 mt-10">Completed</h2>
 
               {completedTodoes.map((todo) => (
